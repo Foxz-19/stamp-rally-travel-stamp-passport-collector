@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#234c40">
+<title>Stamp Rally — Your personal passport</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css">
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#collection">Skip to passport</a>
+<header class="masthead"><a class="brand" href="./" aria-label="Stamp Rally home">Stamp Rally<span class="brand-dot">.</span></a><span class="privacy">A personal passport. No account needed.</span></header>
+<main>
+<section class="intro" aria-labelledby="title"><div><h1 id="title">Places go.<br>Memories <em>stay.</em></h1><p>Keep the places you’ve been.<br>Make room for the next.</p></div><div class="passport-summary"><span class="summary-label">YOUR PASSPORT</span><p id="summary" aria-live="polite"><strong>0</strong> collected <span>/</span> <strong>0</strong> still dreaming</p><a href="#composer">Add a little adventure <span aria-hidden="true">↗</span></a></div></section>
+<div id="storage-warning" class="warning" role="alert" hidden><p id="storage-message"></p><button id="retry" type="button">Retry storage</button><button id="raw-backup" type="button" hidden>Download original data</button></div>
+<p id="boot" role="status">Opening your passport… If this stays visible, enable JavaScript and reload.</p>
+<noscript><p class="warning">Enable JavaScript and reload to use your passport.</p></noscript>
+<div class="workspace">
+<aside id="composer" class="composer" aria-labelledby="form-title">
+<div class="section-heading"><h2 id="form-title">A new memory</h2><span aria-hidden="true" class="plus">+</span></div><p id="form-caption">Somewhere worth remembering.</p>
+<form id="stamp-form" novalidate>
+<fieldset><legend>This place is…</legend><div class="status-choice"><label><input type="radio" name="status" value="visited" checked> Visited</label><label><input type="radio" name="status" value="dream"> A dream</label></div></fieldset>
+<label for="place">Place name</label><input id="place" name="place" maxlength="80" required placeholder="e.g. Kyoto, Japan" autocomplete="off" aria-describedby="form-error">
+<div class="date-label"><label id="date-label" for="date">Date visited</label><span id="date-hint">Required</span></div><input id="date" name="date" type="date" required aria-describedby="date-hint form-error">
+<fieldset class="palette"><legend>Stamp ink</legend><div class="swatches">
+<label class="red"><input type="radio" name="color" value="red" checked><span>Red</span></label><label class="blue"><input type="radio" name="color" value="blue"><span>Blue</span></label><label class="green"><input type="radio" name="color" value="green"><span>Green</span></label><label class="purple"><input type="radio" name="color" value="purple"><span>Purple</span></label><label class="gold"><input type="radio" name="color" value="gold"><span>Gold</span></label>
+</div></fieldset>
+<div class="date-label"><label for="memory">A short memory</label><span id="memory-count">0 / 240</span></div><textarea id="memory" name="memory" rows="3" maxlength="240" placeholder="The moment you want to keep…" aria-describedby="memory-hint"></textarea><small id="memory-hint">A sentence or two. For a dream, what draws you there?</small>
+<p id="form-error" class="error" role="alert" hidden></p><button class="primary" id="save" type="submit">Add to my passport <span aria-hidden="true">↗</span></button><button id="cancel-edit" type="button" hidden>Cancel editing</button>
+</form><p class="local-note" id="save-state">Saved on this browser. Yours to keep.</p>
+</aside>
+<section id="collection" class="collection" aria-labelledby="collection-title" tabindex="-1">
+<div class="collection-heading"><div><h2 id="collection-title">Your passport</h2><p>A collection of little departures.</p></div><button id="export" class="text-button" type="button">Back up</button></div>
+<div class="toolbar"><div class="filters" role="group" aria-label="Filter passport"><button data-filter="all" aria-pressed="true">All places</button><button data-filter="visited" aria-pressed="false">Collected</button><button data-filter="dream" aria-pressed="false">Dreaming</button></div><label class="search"><span class="sr-only">Search places and memories</span><input id="search" type="search" placeholder="Find a place…" maxlength="100"></label></div>
+<p id="results" class="sr-only" role="status"></p><div id="pages" class="pages"></div>
+<footer class="collection-footer"><span>Many places. One little passport.</span><button id="import" class="text-button" type="button">Restore backup</button><input id="import-file" type="file" accept="application/json,.json" hidden></footer>
+</section>
+</div>
+</main>
+<footer class="site-footer"><span>STAMP RALLY</span><span>For the places that become part of you.</span><span>Made for your next chapter.</span></footer>
+<dialog id="confirm" aria-labelledby="dialog-title" aria-describedby="dialog-description"><form method="dialog"><h2 id="dialog-title">Remove this stamp?</h2><p id="dialog-description"></p><div class="dialog-actions"><button value="cancel" autofocus>Keep stamp</button><button id="confirm-action" class="danger" value="confirm">Delete stamp</button></div></form></dialog>
+<div id="toast" role="status" class="toast" hidden></div>
+</body>
+</html>
